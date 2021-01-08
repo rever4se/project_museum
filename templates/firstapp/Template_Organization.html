@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="header" >
+        <h3 align="right">Пользователь: Admin</h3>
+        <h1 align="center">Организация<h1>
+        <h3 align="center"><a href = "{% url 'home' %}">назад</a></h3>
+</div>
+<table border="1" width="100%">
+    <tr>
+        <th align="center" width="50%">
+    <form method="POST" action="addo/">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input type="submit" value="Добавить автора">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="delo/">
+        {% csrf_token %}
+        <label>Введите id</label>
+        <input type= "number" name="delname"><br>
+        <input type= "submit" value="Удалить автора">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="upo/">
+        {% csrf_token %}
+        <label>Введите id</label>
+        <input type= "number" name="upname"><br>
+        <table>
+            {{ form }}
+        </table>
+        <input type= "submit" value="Изменить автора">
+    </form>
+
+        </th>
+        <th align="center">
+
+    <form method="POST" action="show/">
+        {% csrf_token %}
+        <table border="1" width="100%">
+            <tr align="center" bgcolor="grey">
+                <th>Id</th>
+                <th>Название орг.</th>
+                <th>Адрес орг.</th>
+                <th>Телефон орг.</th>
+                <th>Контактная персона</th>
+                <th>Выставка</th>
+            </tr>
+        {% for i in data_show %}
+            <tr align="center">
+                <td>{{ i.id }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.address }}</td>
+                <td>{{ i.phone }}</td>
+                <td>{{ i.person }}</td>
+                <td> <a href="{% url 'exhibition' %}"> {{ i.exhibition_id }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </form>
+</th>
+    </tr>
+</table>
+</body>
+</html>

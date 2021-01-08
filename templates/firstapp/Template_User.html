@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Модели в Django</title>
+</head>
+<body class="container">
+    <div id="header" >
+        <h3 align="right">Пользователь: Admin</h3>
+        <h1 align="center">Авторы<h1>
+        <h3 align="center"><a href = "{% url 'home' %}">назад</a></h3>
+    </div>
+
+<table border="1" width="100%">
+    <tr>
+        <th align="center" width="50%">
+    <form method="POST" action="add/">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input type="submit" value="Добавить автора">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="del/">
+        {% csrf_token %}
+        <label>Введите id</label>
+        <input type= "number" name="delname"><br>
+        <input type= "submit" value="Удалить автора">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="up/">
+        {% csrf_token %}
+        <label>Введите id</label>
+        <input type= "number" name="upname"><br>
+        <table>
+            {{ form }}
+        </table>
+        <input type= "submit" value="Изменить автора">
+    </form>
+
+        </th>
+        <th align="center">
+
+    <form method="POST" action="show/">
+        {% csrf_token %}
+        <table border="1" width="100%">
+            <tr align="center" bgcolor="grey">
+                <th>Id</th>
+                <th>Номер</th>
+                <th>Имя</th>
+                <th>Телефон</th>
+                <th>Должность</th>
+                <th>Фонд</th>
+            </tr>
+        {% for i in data_show %}
+            <tr align="center">
+                <td>{{ i.id }}</td>
+                <td>{{ i.number }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.phone}}</td>
+                <td>{{ i.position}}</td>
+                <td>{{ i.fund_name}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </form>
+        </th>
+    </tr>
+</table>
+
+</body>
+</html>

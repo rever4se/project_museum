@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="header" >
+        <h3 align="right">Пользователь: Admin</h3>
+        <h1 align="center">Выставки<h1>
+        <h3 align="center"><a href = "{% url 'home' %}">назад</a></h3>
+</div>
+
+<table border="1" width="100%">
+    <tr>
+        <th align="center" width="50%">
+    <form method="POST" action="adde/">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input type="submit" value="Добавить автора">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="dele/">
+        {% csrf_token %}
+        <label>Введите id</label>
+        <input type= "number" name="delname"><br>
+        <input type= "submit" value="Удалить автора">
+    </form>
+    <br>
+    <br>
+    <form method="POST" action="upe/">
+        {% csrf_token %}
+        <label>Введите id</label>
+        <input type= "number" name="upname"><br>
+        <table>
+            {{ form }}
+        </table>
+        <input type= "submit" value="Изменить автора">
+    </form>
+
+        </th>
+        <th align="center">
+
+    <form method="POST" action="show/">
+        {% csrf_token %}
+        <table border="1" width="100%">
+            <tr align="center" bgcolor="grey">
+                <th>Id</th>
+                <th>Название выставки</th>
+                <th>Дата начала выставки</th>
+                <th>Дата окончания выставки</th>
+            </tr>
+        {% for i in data_show %}
+            <tr align="center">
+                <td>{{ i.id }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.start_date }}</td>
+                <td>{{ i.finish_date}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </form>
+</th>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<head>
+
+</head>
+
+<div id="header">
+        <h1 align="center">Авторизация для пользователя<h1>
+        <h3 align="center">Для продолжения работы пройдите авторизацию<h3>
+</div>
+<br>
+<br>
+<br>
+<br>
+  <form method="post" action="{% url 'login' %}" align="center">
+    {% csrf_token %}
+    <table align="center">
+      <tr>
+        <td >{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
+    <input class = 'button' type="submit" name="login" value="login" />
+    <input class = 'myfield' type="hidden" name="next" value="{{ next }}" />
+    <h3 align="center"><a href = "{% url 'auth' %}">назад</a></h3>
+  </form>

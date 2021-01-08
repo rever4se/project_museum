@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello Django</title>
+</head>
+<body>
+    <div id="header" >
+        <h3 align="right">Пользователь: user</h3>
+        <h1 align="center">Главная страница<h1>
+    </div>
+    <h3 align="center"><a href = "{% url 'author' %}">Авторы</a></h3>
+    <h3 align="center"><a href = "{% url 'exhibition' %}">Выставки</a></h3>
+    <h3 align="center"><a href = "{% url 'card' %}">Карточки</a></h3>
+    <h3 align="center"><a href = "{% url 'org' %}">Организаций</a></h3>
+    <h3 align="center"><a href = "{% url 'user' %}">Пользователи</a></h3>
+    <h3 align="center"><a href = "{% url 'control' %}">Контроль движения</a></h3>
+    <h3 align="center"><a href="/admin/logout/">Выйти из аккаунта</a></h3>
+</body>
+</html>
